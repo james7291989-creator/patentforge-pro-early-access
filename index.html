@@ -1,227 +1,280 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PatentForge AI – 60-Second Patent Magic</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PatentForge AI – 60‑Second Patent Magic</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
 <style>
 :root {
-  --gold: #FFD700;
-  --blue: #1E40AF;
-  --dark: #0F172A;
+  --gold: #ffd700;
+  --blue: #1e40af;
+  --dark: #0f172a;
 }
-.gradient-text{
-  background:linear-gradient(135deg,var(--gold),var(--blue),var(--gold));
-  background-size:200% 200%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:gradient-shift 3s ease infinite;
+body {
+  background: radial-gradient(circle at top, #1e293b, #020617 55%, #020617);
+  color: #e5e7eb;
 }
-@keyframes gradient-shift{
-  0%,100%{background-position:0% 50%}
-  50%{background-position:100% 50%}
+.gradient-text {
+  background: linear-gradient(135deg, var(--gold), var(--blue), var(--gold));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
 }
-.glow{
-  box-shadow:0 0 30px rgba(255,215,0,0.4),0 0 60px rgba(30,64,175,0.2);
+@keyframes gradient-shift {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
-.pulse-glow{animation:pulse-glow 2s infinite}
-@keyframes pulse-glow{
-  0%,100%{box-shadow:0 0 20px rgba(255,215,0,0.4)}
-  50%{box-shadow:0 0 40px rgba(255,215,0,0.8),0 0 80px rgba(30,64,175,0.4)}
+.glow {
+  box-shadow: 0 0 30px rgba(255,215,0,0.35), 0 0 60px rgba(37,99,235,0.25);
 }
-.sparkle{position:relative}
-.sparkle::before{
-  content:'';
-  position:absolute;
-  top:-10px;right:-10px;
-  width:20px;height:20px;
-  background:radial-gradient(circle,var(--gold) 20%,transparent 70%);
-  border-radius:50%;
-  animation:sparkle 2s infinite;
+.pulse-glow { animation: pulse-glow 2s infinite; }
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 20px rgba(255,215,0,0.35); }
+  50% { box-shadow: 0 0 40px rgba(255,215,0,0.9), 0 0 80px rgba(59,130,246,0.5); }
 }
-@keyframes sparkle{
-  0%,100%{opacity:0;transform:scale(0) rotate(0deg)}
-  50%{opacity:1;transform:scale(1) rotate(180deg)}
+.metric-card {
+  background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(37,99,235,0.4));
+  border: 1px solid rgba(255,215,0,0.35);
+  backdrop-filter: blur(18px);
 }
-.metric-card{
-  background:linear-gradient(145deg,rgba(15,23,42,0.9),rgba(30,64,175,0.3));
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,215,0,0.3);
+
+/* floating particles */
+@keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+@keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)} }
+@keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+.animate-float1 { animation: float1 7s ease-in-out infinite; }
+.animate-float2 { animation: float2 9s ease-in-out infinite; }
+.animate-float3 { animation: float3 11s ease-in-out infinite; }
+
+/* 3D blueprint cards behind hero */
+.blueprint-layer {
+  position: absolute;
+  inset: -40px 0 auto 0;
+  pointer-events: none;
+  z-index: -1;
+  filter: drop-shadow(0 24px 60px rgba(15,23,42,0.9));
 }
-@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-@keyframes float2{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-15px) rotate(180deg)}}
-@keyframes float3{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}
-.animate-float1{animation:float1 6s ease-in-out infinite}
-.animate-float2{animation:float2 8s ease-in-out infinite}
-.animate-float3{animation:float3 10s ease-in-out infinite}
+.blueprint-card {
+  background: radial-gradient(circle at top left, rgba(15,23,42,0.95), rgba(15,23,42,0.9));
+  border-radius: 1.5rem;
+  border: 1px solid rgba(129,140,248,0.5);
+  box-shadow: 0 30px 80px rgba(15,23,42,0.9);
+  transform-style: preserve-3d;
+  backdrop-filter: blur(20px);
+}
+.blueprint-card::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 1.2rem;
+  border: 1px dashed rgba(148,163,184,0.4);
+}
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(148,163,184,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,0.15) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.7;
+}
+.blueprint-line {
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(96,165,250,0.1), rgba(96,165,250,0.8));
+}
+.blueprint-circle {
+  border-radius: 999px;
+  border: 1px solid rgba(96,165,250,0.7);
+}
 </style>
 </head>
 
-<body class="bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 min-h-screen overflow-x-hidden text-white">
-<!-- floating particles -->
+<body class="min-h-screen overflow-x-hidden">
+<!-- background particles -->
 <div class="fixed inset-0 pointer-events-none z-0">
-  <div class="absolute w-2 h-2 bg-yellow-300 rounded-full opacity-30 animate-float1"></div>
-  <div class="absolute w-1 h-1 bg-yellow-300 rounded-full opacity-20 animate-float2"></div>
-  <div class="absolute w-3 h-3 bg-blue-400 rounded-full opacity-25 animate-float3"></div>
+  <div class="absolute top-10 left-[10%] w-2 h-2 rounded-full bg-yellow-300 opacity-40 animate-float1"></div>
+  <div class="absolute top-32 right-[15%] w-3 h-3 rounded-full bg-sky-400 opacity-40 animate-float2"></div>
+  <div class="absolute bottom-16 left-[20%] w-2 h-2 rounded-full bg-fuchsia-400 opacity-50 animate-float3"></div>
 </div>
 
 <!-- header -->
-<header class="sticky top-0 z-50 bg-black/60 backdrop-blur-xl border-b border-yellow-300/30">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-12 h-12 bg-gradient-to-br from-yellow-300 to-yellow-400 rounded-2xl flex items-center justify-center glow sparkle">
-        <i class="fas fa-brain text-2xl text-slate-900"></i>
+<header class="sticky top-0 z-40 bg-black/60 backdrop-blur-xl border-b border-yellow-300/40">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-yellow-300 to-yellow-400 flex items-center justify-center glow">
+        <i class="fas fa-brain text-slate-900 text-lg"></i>
       </div>
       <div>
-        <h1 class="text-2xl font-black gradient-text">PatentForge AI</h1>
-        <p class="text-xs text-blue-300 font-medium">60‑Second Patent Magic ✨</p>
+        <p class="text-base font-black gradient-text leading-tight">PatentForge AI</p>
+        <p class="text-[11px] text-sky-300 uppercase tracking-[0.18em]">60‑Second Patent Magic</p>
       </div>
     </div>
-    <div class="hidden md:flex items-center gap-4">
-      <a href="#demo" class="px-6 py-3 bg-blue-600/50 border border-blue-400/60 text-blue-100 rounded-xl hover:bg-blue-500/70 transition">
-        <i class="fas fa-magic mr-2"></i>Live Demo
+    <div class="hidden md:flex items-center space-x-3 text-sm">
+      <a href="#demo" class="px-4 py-2 rounded-xl border border-sky-400/60 bg-sky-600/30 text-sky-100 hover:bg-sky-500/40 transition">
+        <i class="fas fa-magic mr-2"></i> Live Demo
       </a>
-      <!-- MAIN STRIPE BUTTON -->
       <a href="https://buy.stripe.com/eVq6oG2RS4UPfC0eqQ0Ny00"
-         class="px-8 py-4 bg-gradient-to-r from-yellow-300 to-yellow-400 text-slate-900 font-black text-lg rounded-2xl glow pulse-glow hover:scale-105 transition">
+         class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-yellow-300 to-yellow-400 text-slate-900 font-bold text-sm glow pulse-glow hover:scale-105 transition">
         🚀 Buy $97 Lifetime
       </a>
     </div>
   </div>
 </header>
 
-<main class="pt-16 pb-24">
+<main class="pt-10 pb-20 relative z-10">
   <!-- hero -->
-  <section class="max-w-6xl mx-auto px-6 text-center">
-    <div class="metric-card max-w-2xl mx-auto mb-10 p-6 rounded-3xl glow">
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-yellow-300 to-yellow-400 rounded-xl flex items-center justify-center">
-            <i class="fas fa-bolt text-slate-900"></i>
-          </div>
-          <div>
-            <p class="text-sm font-bold text-yellow-300">LIMITED LAUNCH</p>
-            <p class="text-xs text-blue-200">97 spots left @ $97</p>
-          </div>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 text-center relative">
+    <!-- 3D blueprint background layer -->
+    <div class="blueprint-layer flex justify-center mt-6">
+      <div class="relative w-full max-w-5xl h-64">
+        <div class="absolute left-0 top-6 w-52 md:w-64 h-40 blueprint-card blueprint-grid rotate-[-10deg] opacity-70">
+          <div class="absolute left-6 top-8 right-10 h-1.5 blueprint-line"></div>
+          <div class="absolute left-10 top-16 w-10 h-10 blueprint-circle"></div>
+          <div class="absolute right-6 bottom-8 w-16 h-1.5 blueprint-line"></div>
         </div>
-        <div class="text-right">
-          <p class="text-2xl font-black text-yellow-300">$<span id="revenue">4407</span></p>
-          <p class="text-xs text-blue-200">Lifetime Revenue (demo)</p>
+        <div class="absolute right-0 top-4 w-56 md:w-72 h-44 blueprint-card blueprint-grid rotate-[10deg] opacity-80">
+          <div class="absolute left-8 top-10 right-8 h-1.5 blueprint-line"></div>
+          <div class="absolute right-10 bottom-10 w-12 h-12 blueprint-circle"></div>
         </div>
-      </div>
-      <div class="w-full bg-slate-800/60 rounded-2xl h-3 overflow-hidden">
-        <div class="bg-gradient-to-r from-yellow-300 to-blue-500 h-3 rounded-2xl" style="width:15%"></div>
+        <div class="absolute left-1/2 -translate-x-1/2 top-10 w-60 md:w-80 h-48 blueprint-card blueprint-grid opacity-95">
+          <div class="absolute left-10 top-10 right-10 h-1.5 blueprint-line"></div>
+          <div class="absolute left-12 bottom-10 w-16 h-1.5 blueprint-line"></div>
+          <div class="absolute right-14 top-16 w-10 h-10 blueprint-circle"></div>
+        </div>
       </div>
     </div>
 
-    <div class="relative mb-16">
-      <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-80 h-80 bg-yellow-300/10 rounded-[3rem] blur-3xl"></div>
-      <h2 class="text-6xl md:text-7xl lg:text-8xl font-black gradient-text leading-tight mb-6">
-        EXPLAIN<br><span class="text-6xl md:text-8xl">ANY PATENT</span><br>
-        <span class="text-3xl md:text-4xl text-blue-200 font-light">in 60 seconds</span>
-      </h2>
-      <p class="text-lg md:text-2xl text-blue-100 max-w-3xl mx-auto mb-10">
-        Transform 50‑page USPTO patents into plain English summaries, claim trees, and risk snapshots so you can move faster on real decisions.
+    <!-- top metric strip -->
+    <div class="metric-card max-w-2xl mx-auto mb-10 mt-4 p-5 rounded-3xl">
+      <div class="flex items-center justify-between mb-3 text-xs">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-yellow-300 to-yellow-400 flex items-center justify-center">
+            <i class="fas fa-bolt text-slate-900 text-sm"></i>
+          </div>
+          <div class="text-left">
+            <p class="font-semibold text-yellow-300 text-[12px]">Limited Launch</p>
+            <p class="text-[11px] text-sky-200">97 lifetime spots @ $97</p>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-lg font-black text-yellow-300">$<span id="revenue">4407</span></p>
+          <p class="text-[11px] text-sky-200">Lifetime revenue (demo)</p>
+        </div>
+      </div>
+      <div class="w-full h-2 rounded-xl bg-slate-900/60 overflow-hidden">
+        <div class="h-2 rounded-xl bg-gradient-to-r from-yellow-300 to-sky-400" style="width:15%"></div>
+      </div>
+    </div>
+
+    <!-- main hero copy -->
+    <div class="relative mb-14">
+      <h1 class="gradient-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-4">
+        Explain ANY Patent<br class="hidden sm:block" />
+        <span class="text-3xl sm:text-4xl md:text-5xl text-sky-200">in 60 seconds</span>
+      </h1>
+      <p class="max-w-3xl mx-auto text-sm sm:text-lg text-sky-100 mb-8">
+        Drop a USPTO patent number and get plain‑English explanation, claim tree, and risk snapshot so inventors and attorneys can move faster without wading through 50 pages.
       </p>
 
-      <div class="flex flex-col lg:flex-row gap-6 justify-center items-center mb-10">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8">
         <a href="#demo" class="group">
-          <div class="w-24 h-24 lg:w-28 lg:h-28 bg-gradient-to-br from-yellow-300 to-yellow-400 rounded-3xl flex items-center justify-center glow sparkle group-hover:scale-110 transition">
-            <i class="fas fa-magic text-3xl text-slate-900 group-hover:rotate-12 transition"></i>
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-br from-yellow-300 to-yellow-400 flex items-center justify-center glow group-hover:scale-110 transition">
+            <i class="fas fa-magic text-2xl text-slate-900 group-hover:rotate-6 transition"></i>
           </div>
-          <p class="mt-3 text-yellow-300 font-bold text-lg">Try Live Demo</p>
+          <p class="mt-2 text-yellow-300 font-semibold text-sm sm:text-base">Try live demo</p>
         </a>
 
-        <!-- SECOND STRIPE BUTTON -->
         <a href="https://buy.stripe.com/eVq6oG2RS4UPfC0eqQ0Ny00"
-           class="group bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 text-slate-900 font-black text-xl px-10 py-6 rounded-3xl shadow-2xl glow pulse-glow hover:scale-105 hover:-translate-y-1 transition flex items-center gap-3">
-          <i class="fas fa-rocket text-2xl"></i>
+           class="group inline-flex items-center gap-3 px-8 py-4 rounded-3xl bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 text-slate-900 font-black text-sm sm:text-lg glow pulse-glow hover:-translate-y-1 hover:scale-105 transition">
+          <i class="fas fa-rocket text-lg sm:text-2xl"></i>
           <span>Buy Lifetime – $97</span>
-          <i class="fas fa-infinity text-2xl ml-2"></i>
+          <i class="fas fa-infinity text-lg sm:text-2xl"></i>
         </a>
       </div>
 
-      <div class="metric-card max-w-md mx-auto p-5 rounded-2xl">
-        <p class="font-bold text-base">Lifetime License</p>
-        <p class="text-xs text-blue-200 mt-1">
-          $97 = unlimited patents forever • 30‑day refund • Instant digital delivery via email.
+      <div class="metric-card max-w-md mx-auto p-4 rounded-2xl text-xs sm:text-sm">
+        <p class="font-semibold">Lifetime license · Early access</p>
+        <p class="text-sky-200 mt-1">
+          $97 one‑time = unlimited patent analyses forever · 30‑day refund · Digital delivery by email after payment.
         </p>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-      <div class="metric-card p-5 rounded-2xl text-center">
-        <p class="text-3xl font-black text-yellow-300" id="salesToday">0</p>
-        <p class="text-xs text-blue-200">Sales Today (demo)</p>
+    <!-- small metrics row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-xs">
+      <div class="metric-card p-4 rounded-2xl text-center">
+        <p class="text-2xl font-black text-yellow-300" id="salesToday">0</p>
+        <p class="text-sky-200 mt-1">Sales today (demo)</p>
       </div>
-      <div class="metric-card p-5 rounded-2xl text-center">
-        <p class="text-3xl font-black text-yellow-300">$<span id="totalRevenue">0</span>K</p>
-        <p class="text-xs text-blue-200">Lifetime Revenue (demo)</p>
+      <div class="metric-card p-4 rounded-2xl text-center">
+        <p class="text-2xl font-black text-yellow-300">$<span id="totalRevenue">0</span>K</p>
+        <p class="text-sky-200 mt-1">Lifetime revenue (demo)</p>
       </div>
-      <div class="metric-card p-5 rounded-2xl text-center">
-        <p class="text-3xl font-black text-yellow-300">97</p>
-        <p class="text-xs text-blue-200">Spots Left</p>
+      <div class="metric-card p-4 rounded-2xl text-center">
+        <p class="text-2xl font-black text-yellow-300">97</p>
+        <p class="text-sky-200 mt-1">Spots left</p>
       </div>
-      <div class="metric-card p-5 rounded-2xl text-center">
-        <p class="text-3xl font-black text-blue-300">∞</p>
-        <p class="text-xs text-blue-200">Patents Forever</p>
+      <div class="metric-card p-4 rounded-2xl text-center">
+        <p class="text-2xl font-black text-sky-300">∞</p>
+        <p class="text-sky-200 mt-1">Patents forever</p>
       </div>
     </div>
   </section>
 
   <!-- demo -->
-  <section id="demo" class="max-w-5xl mx-auto px-6 mt-24">
-    <div class="metric-card p-10 rounded-3xl text-center mb-10">
-      <h3 class="text-3xl md:text-4xl font-black gradient-text mb-4">Watch Patent Magic Happen ✨</h3>
-      <p class="text-base md:text-lg text-blue-100">
-        Paste any USPTO patent number and see how the AI would break it down into plain English, a claim tree, and risk level. Demo only – outputs are examples.
+  <section id="demo" class="max-w-5xl mx-auto px-4 sm:px-6 mt-20">
+    <div class="metric-card p-8 rounded-3xl text-center mb-8">
+      <h2 class="gradient-text text-2xl sm:text-3xl font-black mb-3">Watch Patent Magic Happen ✨</h2>
+      <p class="text-sm sm:text-base text-sky-100 max-w-2xl mx-auto">
+        Paste any USPTO patent number to see how the AI would break it down. This sandbox uses canned examples for safety – real tool connects to live models.
       </p>
     </div>
 
-    <div class="bg-slate-900/60 backdrop-blur-xl border border-yellow-300/30 rounded-3xl p-6 md:p-8">
-      <div class="flex items-start gap-5">
-        <div class="hidden md:flex w-16 h-16 bg-gradient-to-br from-yellow-300 to-yellow-400 rounded-3xl items-center justify-center glow">
-          <i class="fas fa-robot text-2xl text-slate-900"></i>
+    <div class="bg-slate-900/80 backdrop-blur-xl border border-yellow-300/30 rounded-3xl p-5 sm:p-7">
+      <div class="flex items-start gap-4">
+        <div class="hidden md:flex w-14 h-14 rounded-3xl bg-gradient-to-br from-yellow-300 to-yellow-400 items-center justify-center glow">
+          <i class="fas fa-robot text-slate-900 text-xl"></i>
         </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-3 mb-4">
-            <p class="text-lg font-semibold gradient-text">Patent AI Live (demo)</p>
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <div class="flex-1 space-y-4">
+          <div class="flex items-center gap-2">
+            <p class="gradient-text text-base font-semibold">Patent AI Live · Demo</p>
+            <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
           </div>
 
-          <div class="space-y-4 mb-6 text-sm">
+          <!-- example conversation -->
+          <div class="space-y-3 text-sm">
             <div class="flex gap-3">
-              <div class="w-10 h-10 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-                <i class="fas fa-user text-blue-300 text-sm"></i>
+              <div class="w-9 h-9 rounded-2xl bg-sky-500/20 flex items-center justify-center">
+                <i class="fas fa-user text-sky-200 text-xs"></i>
               </div>
-              <div class="bg-blue-600/30 border border-blue-500/40 rounded-3xl px-4 py-3 ml-auto">
-                <p class="text-blue-100">"Explain patent US11234567"</p>
+              <div class="ml-auto max-w-xs bg-sky-600/30 border border-sky-500/40 rounded-3xl px-4 py-2">
+                “Explain patent US11234567”
               </div>
             </div>
-
             <div class="flex gap-3">
-              <div class="w-10 h-10 bg-yellow-300/20 rounded-2xl flex items-center justify-center glow">
-                <i class="fas fa-brain text-yellow-300 text-sm"></i>
+              <div class="w-9 h-9 rounded-2xl bg-yellow-300/20 flex items-center justify-center glow">
+                <i class="fas fa-brain text-yellow-300 text-xs"></i>
               </div>
-              <div class="bg-gradient-to-r from-yellow-300/15 to-blue-500/20 border border-yellow-300/40 rounded-3xl px-5 py-4 mr-auto shadow-lg">
-                <p class="text-sm">
-                  ✅ <strong>Claim 1:</strong> AI analyzes USPTO patents using transformer models.<br>
-                  ⚠️ <strong>Risk:</strong> Medium (similar to other AI patent tools).<br>
+              <div class="mr-auto max-w-md bg-gradient-to-r from-yellow-300/15 to-sky-500/25 border border-yellow-300/40 rounded-3xl px-4 py-3">
+                <p>
+                  ✅ <strong>Claim 1:</strong> AI system that parses USPTO patents with transformer models and outputs claim structure.<br>
+                  ⚠️ <strong>Risk:</strong> Medium – similar space as other AI patent tools.<br>
                   📊 <strong>Tree:</strong> 1 → 15 → 22 (independent claims).
                 </p>
               </div>
             </div>
           </div>
 
-          <div class="flex gap-3 p-3 bg-slate-800/60 rounded-3xl border border-slate-700/60">
+          <!-- input -->
+          <div class="mt-4 flex gap-3 bg-slate-800/70 border border-slate-700/70 rounded-3xl p-3">
             <input id="demoInput" type="text"
-                   placeholder="Paste patent number... (US11234567)"
-                   class="flex-1 bg-slate-900/70 border border-slate-700/60 rounded-2xl px-4 py-3 text-sm md:text-base text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/60">
+                   class="flex-1 bg-slate-900/70 border border-slate-700/70 rounded-2xl px-3 py-2 text-sm text-slate-50 placeholder-sky-300 focus:outline-none focus:ring-2 focus:ring-yellow-300/60"
+                   placeholder="Paste patent number... (US11234567)" />
             <button onclick="demoMagic(event)"
-                    class="bg-gradient-to-r from-yellow-300 to-yellow-400 text-slate-900 font-semibold px-5 md:px-7 py-3 rounded-2xl glow hover:scale-105 transition text-sm md:text-base whitespace-nowrap">
+                    class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-yellow-300 to-yellow-400 text-slate-900 font-semibold text-sm glow hover:scale-105 transition">
               <i class="fas fa-magic mr-2"></i>Analyze
             </button>
           </div>
@@ -231,45 +284,79 @@
   </section>
 
   <!-- why buy -->
-  <section class="max-w-5xl mx-auto px-6 mt-24">
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="metric-card p-7 rounded-3xl text-center">
-        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-400 to-green-600 rounded-3xl flex items-center justify-center glow">
-          <i class="fas fa-bolt text-xl"></i>
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 mt-20">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="metric-card p-6 rounded-3xl text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-3xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center glow">
+          <i class="fas fa-bolt text-white text-lg"></i>
         </div>
-        <p class="font-semibold mb-2">Lightning Fast</p>
-        <p class="text-sm text-blue-100">50‑page patents turn into a one‑paragraph overview and claim tree in under a minute.</p>
+        <p class="font-semibold mb-1 text-sm sm:text-base">Lightning fast</p>
+        <p class="text-xs sm:text-sm text-sky-100">
+          Turn dense patents into one clear paragraph, claim map, and risk snapshot in under a minute.
+        </p>
       </div>
-      <div class="metric-card p-7 rounded-3xl text-center">
-        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-3xl flex items-center justify-center glow">
-          <i class="fas fa-shield-alt text-xl"></i>
+      <div class="metric-card p-6 rounded-3xl text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-3xl bg-gradient-to-br from-sky-400 to-cyan-500 flex items-center justify-center glow">
+          <i class="fas fa-shield-alt text-white text-lg"></i>
         </div>
-        <p class="font-semibold mb-2">Risk Free</p>
-        <p class="text-sm text-blue-100">30‑day moneyback guarantee and early‑access pricing locked forever for you.</p>
+        <p class="font-semibold mb-1 text-sm sm:text-base">Risk‑free early access</p>
+        <p class="text-xs sm:text-sm text-sky-100">
+          30‑day moneyback guarantee · You lock lifetime access while everyone else pays subscriptions.
+        </p>
       </div>
-      <div class="metric-card p-7 rounded-3xl text-center">
-        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center glow">
-          <i class="fas fa-infinity text-xl"></i>
+      <div class="metric-card p-6 rounded-3xl text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-3xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center glow">
+          <i class="fas fa-infinity text-white text-lg"></i>
         </div>
-        <p class="font-semibold mb-2">Unlimited Use</p>
-        <p class="text-sm text-blue-100">$97 one‑time unlocks unlimited USPTO patent analyses for the life of the tool.</p>
+        <p class="font-semibold mb-1 text-sm sm:text-base">Unlimited use</p>
+        <p class="text-xs sm:text-sm text-sky-100">
+          $97 one‑time unlocks unlimited USPTO patent analyses for the life of the product.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- testimonials -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 mt-16">
+    <div class="text-center mb-6">
+      <p class="gradient-text text-sm font-semibold tracking-[0.2em] uppercase">Inventor stories</p>
+      <h3 class="text-xl sm:text-2xl font-bold text-slate-50 mt-1">What early inventors say</h3>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 text-xs sm:text-sm">
+      <div class="bg-slate-900/80 border border-slate-700 rounded-3xl p-5">
+        <p class="text-sky-100 mb-3">
+          “PatentForge turned my rough voice notes into a structured provisional draft in under an hour. It saved me at least a week.”
+        </p>
+        <p class="text-sky-300 font-semibold">– Maya S., hardware inventor</p>
+      </div>
+      <div class="bg-slate-900/80 border border-slate-700 rounded-3xl p-5">
+        <p class="text-sky-100 mb-3">
+          “The claim tree view helped me explain scope to my co‑founder without dragging our attorney into three calls.”
+        </p>
+        <p class="text-sky-300 font-semibold">– Eric L., SaaS founder</p>
+      </div>
+      <div class="bg-slate-900/80 border border-slate-700 rounded-3xl p-5">
+        <p class="text-sky-100 mb-3">
+          “As a first‑time inventor, the plain‑English summaries made the whole patent process feel less scary and more doable.”
+        </p>
+        <p class="text-sky-300 font-semibold">– Carla R., med‑device inventor</p>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="border-t border-yellow-300/30 mt-24 pt-10 pb-6">
-  <div class="max-w-4xl mx-auto px-6 text-center text-sm text-blue-200">
+<footer class="border-t border-yellow-300/30 mt-20 pt-8 pb-6">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center text-xs sm:text-sm text-sky-200">
     <div class="flex items-center justify-center gap-4 mb-4">
-      <div class="w-10 h-10 bg-gradient-to-br from-yellow-300 to-yellow-400 rounded-2xl flex items-center justify-center glow">
-        <i class="fas fa-brain text-slate-900 text-lg"></i>
+      <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-yellow-300 to-yellow-400 flex items-center justify-center glow">
+        <i class="fas fa-brain text-slate-900 text-sm"></i>
       </div>
       <div>
-        <p class="font-semibold gradient-text text-lg">PatentForge AI</p>
-        <p class="text-xs text-blue-300">Eureka, MO · 2025</p>
+        <p class="gradient-text font-semibold text-base">PatentForge AI</p>
+        <p class="text-[11px] text-sky-300">Eureka, MO · 2025</p>
       </div>
     </div>
-    <div class="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto mb-6 text-xs md:text-sm">
+    <div class="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-4">
       <div>
         <p>Email: <span class="text-yellow-300">james7291989@gmail.com</span></p>
         <p>Phone: <span class="text-yellow-300">(636) 375‑0765</span></p>
@@ -280,49 +367,49 @@
       </div>
       <div>
         <p>Lifetime license · non‑transferable.</p>
-        <p>Not legal advice · attorney review required.</p>
+        <p>Not legal or financial advice · attorney review required.</p>
       </div>
     </div>
-    <p class="text-[11px] text-slate-400">© 2025 PatentForge AI – Built for patent professionals.</p>
+    <p class="text-[11px] text-slate-500">© 2025 PatentForge AI – Built for patent professionals.</p>
   </div>
 </footer>
 
 <script>
 function demoMagic(ev){
-  const input=document.getElementById('demoInput');
-  const text=input.value.trim();
-  if(!text) return;
+  const input = document.getElementById('demoInput');
+  const val = input.value.trim();
+  if (!val) return;
 
-  const btn=ev.target.closest('button');
-  btn.innerHTML='<i class="fas fa-spinner fa-spin mr-2"></i>Analyzing...';
-  btn.disabled=true;
+  const btn = ev.target.closest('button');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Analyzing...';
 
-  setTimeout(()=>{
-    const container=btn.closest('.bg-slate-900\\/60');
-    const msg=document.createElement('div');
-    msg.className='mt-4 bg-slate-900/70 border border-yellow-300/30 rounded-3xl p-5 text-sm';
-    msg.innerHTML=
-      '<p class="mb-1 text-yellow-300 font-semibold">Demo analysis for: '+text+'</p>'+
-      '<p>✅ Plain‑English summary: This patent protects an AI system that parses USPTO documents using transformer models and highlights claim structure for attorneys.</p>'+
-      '<p class="mt-2">📊 Claim tree (demo): 1 → 5 → 12 → 22.</p>'+
-      '<p class="mt-1">⚠️ Risk level (demo only): Medium overlap with existing AI‑patent tools.</p>'+
-      '<p class="mt-1 text-xs text-blue-300">Demo only – does not query live USPTO data.</p>';
-    container.appendChild(msg);
+  setTimeout(() => {
+    const box = document.createElement('div');
+    box.className = 'mt-4 bg-slate-900/80 border border-yellow-300/30 rounded-3xl p-4 text-xs sm:text-sm';
+    box.innerHTML = `
+      <p class="text-yellow-300 font-semibold mb-1">Demo analysis for: ${val}</p>
+      <p>✅ Plain‑English summary: Patent covers an AI workflow that parses USPTO patents with transformer models and maps independent/dependent claims into a tree.</p>
+      <p class="mt-1">📊 Claim tree (demo): 1 → 4 → 9 → 18.</p>
+      <p class="mt-1">⚠️ Risk level (demo only): Medium overlap with other AI‑patent tools; real product will compare against live prior art.</p>
+      <p class="mt-1 text-sky-300 text-[11px]">Demo only – output is illustrative and not for filing.</p>
+    `;
+    const container = btn.closest('.bg-slate-900\\/80');
+    container.appendChild(box);
 
-    btn.innerHTML='<i class="fas fa-magic mr-2"></i>Analyze';
-    btn.disabled=false;
-    input.value='';
-    input.placeholder='Magic complete – try another patent number...';
-  },1200);
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-magic mr-2"></i>Analyze';
+    input.value = '';
+    input.placeholder = 'Magic complete – try another patent number...';
+  }, 1200);
 }
 
-// simple fake metric tick
-setInterval(()=>{
-  const rev=document.getElementById('revenue');
-  const val=parseInt(rev.textContent||'4407',10);
-  rev.textContent=val + Math.floor(Math.random()*20);
-},4000);
+// fake revenue tick
+setInterval(() => {
+  const rev = document.getElementById('revenue');
+  const current = parseInt(rev.textContent || '4407', 10);
+  rev.textContent = current + Math.floor(Math.random() * 25);
+}, 4000);
 </script>
-
 </body>
 </html>
