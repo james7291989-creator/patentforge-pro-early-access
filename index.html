@@ -1,11 +1,13 @@
 Ts
-/****PATENTFORGE Ω — FULL SYSTEM (SINGLE FILE REFERENCE IMPLEMENTATION)Purpose: AI-assisted patent intelligence platformDisclaimer: Not legal advice. For licensed professionals only.
+/**** PATENTFORGE Ω — FULL SYSTEM (SINGLE FILE REFERENCE IMPLEMENTATION)
+Purpose: AI-assisted patent intelligence platform
+Disclaimer: Not legal advice. For licensed professionals only.
 ****//* =========================
 ENVIRONMENT VARIABLES
 ========================= */const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || "";
 const DATABASE_URL = process.env.DATABASE_URL || "";/* Optional runtime guards (can be toggled off in dev) */
-function assertEnv() {
+function assertEnv(): void {
 const missing: string[] = [];
 if (!OPENAI_API_KEY) missing.push("OPENAI_API_KEY");
 if (!ANTHROPIC_API_KEY) missing.push("ANTHROPIC_API_KEY");
@@ -89,8 +91,7 @@ abstractText?: string;
 const url = https://developer.uspto.gov/ibd-api/v1/patent/application/${encodeURIComponent( patentOrAppNumber )};const res = await fetch(url, { method: "GET" });
 if (!res.ok) {
 throw new Error(USPTO fetch failed: ${res.status} ${res.statusText});
-}
-const json = (await res.json()) as USPTOApplication | { results?: USPTOApplication[] };// Some IBD API responses wrap in { results: [...] }
+}const json = (await res.json()) as USPTOApplication | { results?: USPTOApplication[] };// Some IBD API responses wrap in { results: [...] }
 const data =
 (json as USPTOApplication)?.description !== undefined ||
 (json as USPTOApplication)?.claims !== undefined
@@ -128,8 +129,7 @@ recommendedStrategy: string;
 };function predictExaminer(examiner: ExaminerMeta, claimStructureScore: number): ExaminerPrediction {
 const allowance = typeof examiner.allowance_rate === "number" ? examiner.allowance_rate : 0.0;
 const s = Math.max(0, Math.min(1, claimStructureScore));
-const probability = allowance * s;
-const likelyRejections = [
+const probability = allowance * s;const likelyRejections = [
 examiner.common_102 ? "§102 novelty" : null,
 examiner.common_103 ? "§103 obviousness" : null,
 examiner.common_112 ? "§112 support" : null,
@@ -193,4 +193,4 @@ SYSTEM GUARANTEES
 ✔ Saved attorney portfolios
 ✔ Enterprise-safe language
 ✔ Defensible proprietary layer
-*//****
+*/
