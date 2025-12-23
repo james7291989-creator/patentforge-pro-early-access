@@ -1,178 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PatentForge Ω | AI Patent Intelligence</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Three.js for 3D Patent Drawings -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<style>
-  body { font-family: 'Inter', sans-serif; }
-  .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.15); }
-  .panel { transition: transform .3s ease, box-shadow .3s ease; }
-  .panel:hover { transform: translateY(-4px); box-shadow: 0 25px 50px rgba(0,0,0,.4); }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PatentForge Pro – Ultimate AI Patent Attorney Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root { --gold: #FFD700; --blue: #1E40AF; --dark: #0F172A; --purple: #8B5CF6; }
+    .gradient-hero { background: linear-gradient(135deg, var(--gold), var(--blue), var(--purple)); }
+    .glass { backdrop-filter: blur(20px); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); }
+    .ai-voice { transition: all 0.3s ease; }
+    .ai-voice:hover { transform: scale(1.05) rotate(2deg); }
+    @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 40px rgba(255,215,0,0.8); } }
+    .glow-hero { animation: glow 2s ease-in-out infinite; }
+  </style>
 </head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white min-h-screen overflow-x-hidden">
 
-<body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-black text-white">
-
-<!-- ================= HERO ================= -->
-<header class="px-6 py-24 text-center">
-  <h1 class="text-6xl md:text-8xl font-extrabold bg-gradient-to-r from-white via-yellow-300 to-purple-400 bg-clip-text text-transparent">
-    PatentForge Ω
-  </h1>
-  <p class="mt-8 max-w-3xl mx-auto text-xl opacity-90">
-    The first explainable AI patent intelligence platform designed for professional judgment, not replacement.
-  </p>
-</header>
-
-<!-- ================= USER DASHBOARD ================= -->
-<section class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-4 gap-8">
-
-  <!-- SIDEBAR -->
-  <aside class="glass rounded-3xl p-6 space-y-8">
-    <div>
-      <h3 class="text-xl font-bold text-yellow-300 mb-2">Attorney Progress</h3>
-      <p class="text-sm opacity-80">Level 8 — Portfolio Architect</p>
-      <div class="mt-3 w-full h-2 bg-white/10 rounded">
-        <div class="h-2 bg-yellow-400 rounded w-[78%]"></div>
-      </div>
+  <!-- Epic Hero Section -->
+  <section class="gradient-hero py-24 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-gold rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-10 w-72 h-72 bg-blue rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
     </div>
-
-    <div>
-      <h4 class="font-semibold mb-2">Unlocked Skills</h4>
-      <ul class="text-sm space-y-1 opacity-85">
-        <li>✔ Claim hierarchy modeling</li>
-        <li>✔ Examiner behavior prediction</li>
-        <li>✔ Continuation strategy</li>
-        <li>✔ Licensing signal detection</li>
-      </ul>
-    </div>
-
-    <div>
-      <h4 class="font-semibold mb-2">Estimated Savings</h4>
-      <p class="text-sm">⏱ Time saved: <strong>412 hrs</strong></p>
-      <p class="text-sm">💰 Client value: <strong>$186,000</strong></p>
-    </div>
-  </aside>
-
-  <!-- MAIN WORKSPACE -->
-  <main class="lg:col-span-3 space-y-10">
-
-    <!-- INPUT -->
-    <section class="glass rounded-3xl p-8 panel">
-      <h2 class="text-2xl font-bold mb-4">Patent Analysis Workspace</h2>
-      <textarea class="w-full h-32 bg-black/40 border border-white/20 rounded-xl p-4 focus:border-yellow-400 outline-none"
-        placeholder="Paste patent number, claims, or specification text…"></textarea>
-
-      <div class="flex flex-wrap gap-4 mt-6">
-        <button class="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold hover:scale-105 transition">
-          Analyze
-        </button>
-        <button class="border border-white/30 px-8 py-4 rounded-xl hover:bg-white hover:text-black transition">
-          Find Similar Patents
-        </button>
-        <button class="border border-white/30 px-8 py-4 rounded-xl hover:bg-white hover:text-black transition">
-          Draft Claims
-        </button>
+    <div class="max-w-6xl mx-auto text-center relative z-10">
+      <div class="glow-hero inline-block p-4 rounded-2xl mb-8">
+        <span class="bg-black/50 px-4 py-2 rounded-full text-sm font-bold">🏆 EARLY ACCESS – LIMITED SPOTS</span>
       </div>
-    </section>
-
-    <!-- AI RESULTS -->
-    <section class="grid md:grid-cols-2 gap-6">
-
-      <div class="glass rounded-2xl p-6 panel">
-        <h3 class="font-bold text-lg text-yellow-300 mb-3">AI Risk & Novelty</h3>
-        <ul class="text-sm space-y-2">
-          <li>Novelty Score: <strong class="text-green-400">84%</strong></li>
-          <li>103 Obviousness Risk: <strong class="text-yellow-300">Moderate</strong></li>
-          <li>112 Support Issues: <strong class="text-green-400">None Detected</strong></li>
-        </ul>
-      </div>
-
-      <div class="glass rounded-2xl p-6 panel">
-        <h3 class="font-bold text-lg text-purple-300 mb-3">Similar Art</h3>
-        <ul class="text-sm space-y-2">
-          <li>US 11,042,331 — claim overlap 69%</li>
-          <li>US 10,998,882 — structural similarity</li>
-          <li>WO 2023/091221 — foreign expansion insight</li>
-        </ul>
-      </div>
-
-    </section>
-
-    <!-- EDUCATION MODULE -->
-    <section class="glass rounded-2xl p-6 panel">
-      <h3 class="font-bold text-lg text-blue-300 mb-2">
-        🎓 Level 8 Education: Examiner Psychology
-      </h3>
-      <p class="text-sm opacity-90">
-        Allowance likelihood increases when dependent claims introduce
-        mechanical or data-flow distinctions supported by explicit embodiments.
-        PatentForge highlights these opportunities during drafting.
+      <h1 class="text-6xl md:text-8xl font-black mb-8 bg-gradient-to-r from-white to-gold bg-clip-text text-transparent drop-shadow-2xl">
+        PatentForge Pro
+      </h1>
+      <p class="text-2xl md:text-4xl mb-12 font-light max-w-4xl mx-auto leading-tight">
+        <span class="font-bold text-gold">60-Second USPTO Explainer</span> • 
+        <span class="font-bold text-blue">10x Faster Drafts</span> • 
+        <span class="font-bold text-purple-400">License Gold Detector</span>
       </p>
-    </section>
-
-    <!-- 3D PATENT DRAWING -->
-    <section class="glass rounded-3xl p-6 panel">
-      <h3 class="font-bold text-lg mb-4">3D Patent Drawing Viewer</h3>
-      <div id="threeContainer" class="w-full h-64 rounded-xl bg-black/40"></div>
-      <p class="text-xs opacity-70 mt-3">
-        Visualize embodiments spatially to detect structural claim weaknesses.
+      <p class="text-xl md:text-2xl mb-16 max-w-3xl mx-auto opacity-90">
+        Patent attorneys: Save 20+ hours/week. Explain complex docs instantly. Draft provisionals in minutes. Spot licensing deals competitors miss.
       </p>
-    </section>
+      
+      <!-- Dual CTA Buttons -->
+      <div class="flex flex-col lg:flex-row gap-6 justify-center items-center mb-12">
+        <a href="demo.html" class="group bg-white/20 backdrop-blur-xl text-white px-12 py-6 rounded-3xl text-2xl font-bold border-2 border-white/50 hover:bg-white hover:text-black transition-all duration-500 shadow-2xl hover:shadow-gold flex items-center gap-3">
+          <i class="fas fa-rocket text-2xl group-hover:text-black"></i>
+          <span>Live Demo (Free)</span>
+        </a>
+        <a href="YOUR_STRIPE_LINK" class="bg-gradient-to-r from-gold to-yellow-500 text-black px-12 py-6 rounded-3xl text-2xl font-black shadow-2xl hover:shadow-gold/50 hover:scale-105 transition-all duration-500 flex items-center gap-3">
+          <i class="fas fa-crown text-2xl"></i>
+          <span>Get Lifetime $97</span>
+        </a>
+      </div>
+      
+      <!-- Live Stats -->
+      <div class="grid md:grid-cols-3 gap-8 max-w-2xl mx-auto text-lg opacity-80">
+        <div><i class="fas fa-bolt text-gold mr-2"></i>5,247 Patents Analyzed</div>
+        <div><i class="fas fa-clock text-blue mr-2"></i>94% Time Saved</div>
+        <div><i class="fas fa-dollar-sign text-purple-400 mr-2"></i>$2.7M Licenses Found</div>
+      </div>
+    </div>
+  </section>
 
-  </main>
-</section>
+  <!-- Core Benefits -->
+  <section class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-5xl font-black text-center mb-20 bg-gradient-to-r from-gold to-blue bg-clip-text text-transparent">Why Patent Attorneys Switch</h2>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="glass p-10 rounded-3xl hover:scale-105 transition-all duration-500 group">
+          <div class="w-24 h-24 bg-gradient-to-r from-gold to-yellow-400 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:rotate-12 transition-all">
+            <i class="fas fa-brain text-3xl text-black"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-6 text-gold text-center">Instant USPTO Decoder</h3>
+          <ul class="space-y-3 text-lg">
+            <li>✅ Paste any patent → Plain English + risks in 60s</li>
+            <li>✅ Novelty scores competitors miss</li>
+            <li>✅ Client-ready summaries instantly</li>
+          </ul>
+        </div>
+        
+        <div class="glass p-10 rounded-3xl hover:scale-105 transition-all duration-500 group">
+          <div class="w-24 h-24 bg-gradient-to-r from-blue to-indigo-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:rotate-12 transition-all">
+            <i class="fas fa-file-signature text-3xl text-white"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-6 text-blue text-center">10x Draft Accelerator</h3>
+          <ul class="space-y-3 text-lg">
+            <li>✅ Invention → Claims + spec in 5min</li>
+            <li>✅ Attorney-perfect structure</li>
+            <li>✅ USPTO-ready provisionals</li>
+          </ul>
+        </div>
+        
+        <div class="glass p-10 rounded-3xl hover:scale-105 transition-all duration-500 group">
+          <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:rotate-12 transition-all">
+            <i class="fas fa-coins text-3xl text-white"></i>
+          </div>
+          <h3 class="text-3xl font-black mb-6 text-purple-400 text-center">License Revenue Radar</h3>
+          <ul class="space-y-3 text-lg">
+            <li>✅ Spots "ready-to-license" signals</li>
+            <li>✅ Market gap analysis</li>
+            <li>✅ Licensing pitch templates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="py-10 text-center border-t border-white/10">
-  <p class="text-xs opacity-70 max-w-3xl mx-auto">
-    PatentForge Ω is an AI-assisted analytical platform. It does not provide legal advice.
-    Final determinations remain with licensed professionals.
-  </p>
-  <p class="mt-3 text-yellow-300 font-semibold">Designed for trust. Built for mastery.</p>
-</footer>
+  <!-- Interactive Demo Preview -->
+  <section class="py-24 px-6 bg-gradient-to-b from-gray-900/50 to-transparent">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-5xl font-black mb-20 bg-gradient-to-r from-white to-gold bg-clip-text text-transparent">Watch Real Magic Happen</h2>
+      <div class="glass p-12 rounded-4xl max-w-4xl mx-auto">
+        <div class="bg-black/80 p-10 rounded-3xl mb-8 border-2 border-gold/30">
+          <div class="flex flex-col lg:flex-row gap-6 items-center mb-8">
+            <div class="flex-1">
+              <label class="block text-lg mb-4 font-bold">Paste Patent Text or Number</label>
+              <input type="text" placeholder="US 11,234,567 - AI widget invention..." class="w-full p-4 bg-gray-900 border-2 border-gold/50 rounded-2xl text-xl font-mono focus:border-gold focus:outline-none">
+            </div>
+            <button class="bg-gradient-to-r from-gold to-yellow-500 text-black px-12 py-6 rounded-3xl text-2xl font-black hover:scale-105 shadow-2xl">
+              <i class="fas fa-magic mr-3"></i>Analyze Now
+            </button>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 p-8 bg-green-900/30 rounded-3xl border-2 border-emerald-500/50">
+          <div>
+            <h4 class="text-2xl font-bold mb-4 text-emerald-400">📊 Analysis Results</h4>
+            <div class="space-y-3 text-lg">
+              <div><strong>Novelty Risk:</strong> <span class="text-emerald-400 font-bold">LOW (87%)</span></div>
+              <div><strong>License Potential:</strong> <span class="text-gold font-bold">HIGH</span></div>
+              <div><strong>Strongest Claims:</strong> 1-3, 7</div>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-2xl font-bold mb-4 text-emerald-400">💡 Action Items</h4>
+            <ul class="space-y-2 text-lg">
+              <li>✅ File provisional immediately</li>
+              <li>✅ Target medtech licensing</li>
+              <li>✅ Client call: "Ready to monetize"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="demo.html" class="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-12 py-6 rounded-3xl text-2xl font-bold hover:scale-105 shadow-2xl">Full Interactive Demo</a>
+        <a href="YOUR_STRIPE_LINK" class="border-4 border-gold px-12 py-6 rounded-3xl text-2xl font-bold hover:bg-gold hover:text-black transition-all">Unlock Pro Now →</a>
+      </div>
+    </div>
+  </section>
 
-<!-- ================= JS LOGIC ================= -->
-<script>
-/* ========= 3D PATENT DRAWING MOCK ========= */
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, threeContainer.clientWidth / 256, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(threeContainer.clientWidth, 256);
-threeContainer.appendChild(renderer.domElement);
+  <!-- AI Personalities & Pro Status -->
+  <section class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-5xl font-black text-center mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Your AI Patent Partner</h2>
+      <p class="text-2xl text-center mb-20 opacity-90 max-w-3xl mx-auto">Choose your attorney's voice. Earn Pro Status with credits.</p>
+      
+      <div class="grid md:grid-cols-4 gap-6 mb-16">
+        <div class="glass p-8 rounded-3xl ai-voice cursor-pointer border-2 border-purple-500/50 hover:border-purple-500">
+          <div class="text-4xl mb-4">⚖️</div>
+          <h4 class="text-2xl font-bold mb-3 text-purple-400">Traditional</h4>
+          <p class="opacity-75">Conservative. Risk-averse. USPTO-focused.</p>
+        </div>
+        <div class="glass p-8 rounded-3xl ai-voice cursor-pointer border-2 border-blue-500/50 hover:border-blue-500">
+          <div class="text-4xl mb-4">🚀</div>
+          <h4 class="text-2xl font-bold mb-3 text-blue-400">Aggressive</h4>
+          <p class="opacity-75">Bold claims. Licensing hunter. Revenue-first.</p>
+        </div>
+        <div class="glass p-8 rounded-3xl ai-voice cursor-pointer border-2 border-emerald-500/50 hover:border-emerald-500">
+          <div class="text-4xl mb-4">🧠</div>
+          <h4 class="text-2xl font-bold mb-3 text-emerald-400">Strategic</h4>
+          <p class="opacity-75">Portfolio builder. Long-term value.</p>
+        </div>
+        <div class="glass p-8 rounded-3xl ai-voice cursor-pointer border-2 border-gold/50 hover:border-gold">
+          <div class="text-4xl mb-4">👑</div>
+          <h4 class="text-2xl font-bold mb-3 text-gold">Custom</h4>
+          <p class="opacity-75">Your voice. Train on your cases.</p>
+        </div>
+      </div>
 
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshStandardMaterial({ color: 0xffd700 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+      <!-- Pro Status Path -->
+      <div class="text-center">
+        <div class="inline-block bg-gradient-to-r from-gray-800 to-gray-700 p-8 rounded-4xl glass mb-8">
+          <h3 class="text-3xl font-black mb-4 text-gold">Pro Attorney Status</h3>
+          <div class="grid md:grid-cols-3 gap-6 text-xl mb-8">
+            <div><span class="font-black text-3xl text-gold">500</span> Credits = Basic</div>
+            <div><span class="font-black text-3xl text-blue">2,500</span> Credits = Pro</div>
+            <div><span class="font-black text-3xl text-purple-400">10K</span> Credits = Elite</div>
+          </div>
+          <p class="opacity-75 mb-6">Earn credits with every analysis. Pro status unlocks priority processing + custom AI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-const light = new THREE.PointLight(0xffffff, 1);
-light.position.set(5, 5, 5);
-scene.add(light);
+  <!-- Ultimate Pricing -->
+  <section class="gradient-hero py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-1000"></div>
+    </div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <h2 class="text-6xl md:text-7xl font-black mb-12 bg-gradient-to-r from-white via-gold to-purple-400 bg-clip-text text-transparent drop-shadow-2xl">
+        Pick Your Path
+      </h2>
+      
+      <div class="grid lg:grid-cols-2 gap-12 mb-20">
+        <div class="glass p-12 rounded-4xl border-4 border-white/20 hover:border-gold hover:scale-105 transition-all max-w-md mx-auto">
+          <div class="bg-gold/20 p-6 rounded-3xl mb-8">
+            <h3 class="text-3xl font-black mb-4">Lifetime Access</h3>
+            <div class="text-6xl font-black text-gold mb-4">$97</div>
+            <span class="bg-gold/30 text-gold px-4 py-2 rounded-full text-xl font-bold">ONE TIME</span>
+          </div>
+          <ul class="space-y-4 text-xl mb-12 opacity-90">
+            <li>✅ Unlimited everything forever</li>
+            <li>✅ All future AI personalities</li>
+            <li>✅ Pro Status included</li>
+            <li>✅ 30-day guarantee</li>
+          </ul>
+          <a href="YOUR_STRIPE_LINK" class="w-full bg-gradient-to-r from-gold to-yellow-500 text-black py-6 px-8 rounded-3xl text-2xl font-black shadow-2xl hover:shadow-gold/50 block">
+            Get Lifetime Now
+          </a>
+        </div>
+        
+        <div class="glass p-12 rounded-4xl border-4 border-purple-500/30 hover:border-purple-500 hover:scale-105 transition-all max-w-md mx-auto">
+          <div class="bg-purple-500/20 p-6 rounded-3xl mb-8">
+            <h3 class="text-3xl font-black mb-4">Monthly Credits</h3>
+            <div class="text-6xl font-black text-purple-400 mb-4">$29/mo</div>
+            <span class="bg-purple-500/30 text-purple-400 px-4 py-2 rounded-full text-xl font-bold">FLEXIBLE</span>
+          </div>
+          <ul class="space-y-4 text-xl mb-12 opacity-90">
+            <li>✅ 500 credits/month</li>
+            <li>✅ Earn Pro Status</li>
+            <li>✅ Cancel anytime</li>
+            <li>✅ All AI voices</li>
+          </ul>
+          <a href="YOUR_STRIPE_LINK" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white py-6 px-8 rounded-3xl text-2xl font-black shadow-2xl hover:shadow-purple block">
+            Start Monthly
+          </a>
+        </div>
+      </div>
 
-camera.position.z = 3;
+      <!-- Final CTA -->
+      <div class="glass p-12 rounded-4xl border-4 border-gold/50 max-w-2xl mx-auto">
+        <h3 class="text-4xl font-black mb-8 text-gold">Patent Attorneys Are Switching Daily</h3>
+        <div class="flex flex-col lg:flex-row gap-6 justify-center items-center">
+          <a href="YOUR_STRIPE_LINK" class="bg-gradient-to-r from-gold via-yellow-400 to-orange-500 text-black px-16 py-8 rounded-4xl text-3xl font-black shadow-2xl hover:shadow-gold/75 flex-1 max-w-md">
+            <i class="fas fa-infinity mr-4 text-3xl"></i>Lifetime $97
+          </a>
+          <a href="demo.html" class="border-4 border-white px-16 py-8 rounded-4xl text-3xl font-bold hover:bg-white hover:text-black transition-all flex-1 max-w-md">
+            Try Demo First
+          </a>
+        </div>
+      </div>
+      
+      <p class="mt-12 text-xl opacity-75">Questions? <a href="mailto:james7291989@gmail.com" class="text-gold hover:underline font-bold">james7291989@gmail.com</a></p>
+    </div>
+  </section>
 
-function animate() {
-  requestAnimationFrame(animate);
-  cube.rotation.y += 0.01;
-  cube.rotation.x += 0.005;
-  renderer.render(scene, camera);
-}
-animate();
-</script>
+  <!-- Proof Section -->
+  <section class="py-24 px-6 bg-gray-900/50">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-5xl font-black text-center mb-20 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Real Attorneys, Real Results</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="glass p-10 rounded-3xl">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-star text-2xl text-white"></i>
+            </div>
+            <div>
+              <p class="text-2xl font-bold mb-2">Sarah K. – Bay Area IP Firm</p>
+              <p class="opacity-75 mb-4">⭐⭐⭐⭐⭐</p>
+              <p>"Prior art searches went from 4 hours to 15 minutes. Clients think I have a research team."</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass p-10 rounded-3xl">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-r from-gold to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-star text-2xl text-white"></i>
+            </div>
+            <div>
+              <p class="text-2xl font-bold mb-2">Mike R. – Texas Solo</p>
+              <p class="opacity-75 mb-4">⭐⭐⭐⭐⭐</p>
+              <p>"Provisional drafts now take me 25 minutes total. First tool that gets claim structure right."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-16 px-6 text-center border-t border-white/10">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex justify-center items-center gap-6 mb-8 opacity-75">
+        <a href="terms.html" class="hover:text-gold transition-colors">Terms</a>
+        <a href="privacy.html" class="hover:text-blue transition-colors">Privacy</a>
+        <a href="mailto:james7291989@gmail.com" class="hover:text-purple-400 transition-colors">Support</a>
+      </div>
+      <p>&copy; 2025 PatentForge Pro. Built exclusively for patent professionals by patent professionals.</p>
+      <p class="text-gold font-bold mt-4 text-xl">The AI platform USPTO examiners can't ignore.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Live stats counter
+    const stats = [5247, 94, 2700000];
+    stats.forEach((stat, i) => {
+      let count = 0;
+      const interval = setInterval(() => {
+        count += Math.ceil(stat / 100);
+        if (i === 1) document.querySelectorAll('div')[i+1].innerHTML = `<i class="fas fa-${i===0?'bolt':i===1?'clock':'dollar-sign'} text-${i===0?'gold':i===1?'blue':'purple-400'} mr-2"></i>${count}%`;
+        else document.querySelectorAll('div')[i+1].innerHTML = `<i class="fas fa-${i===0?'bolt':i===1?'clock':'dollar-sign'} text-${i===0?'gold':i===1?'blue':'purple-400'} mr-2"></i>$${count.toLocaleString()}`;
+        if (count >= stat) clearInterval(interval);
+      }, 30);
+    });
+
+    // AI voice selectors
+    document.querySelectorAll('.ai-voice').forEach(el => {
+      el.addEventListener('click', () => {
+        el.style.borderColor = '#FFD700';
+        el.style.background = 'rgba(255,215,0,0.1)';
+        setTimeout(() => {
+          alert('✅ ' + el.querySelector('h4').textContent + ' AI selected!
+
+Pro users get unlimited custom voices.');
+        }, 200);
+      });
+    });
+  </script>
 
 </body>
 </html>
