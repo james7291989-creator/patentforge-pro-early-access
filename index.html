@@ -1,492 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PatentForge Ω | Award-Winning AI Patent Intelligence</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-
-<style>
-:root { 
-  --gold: #FFD700; 
-  --blue: #1E40AF; 
-  --purple: #8B5CF6; 
-  --dark: #0F172A;
-}
-body { font-family: 'Inter', sans-serif; }
-.glass { 
-  background: rgba(255,255,255,0.08); 
-  backdrop-filter: blur(18px); 
-  border: 1px solid rgba(255,255,255,0.15); 
-}
-.gradient-hero { 
-  background: linear-gradient(135deg, var(--gold), var(--blue), var(--purple)); 
-}
-.panel { transition: transform .3s ease, box-shadow .3s ease; }
-.panel:hover { transform: translateY(-4px); box-shadow: 0 25px 50px rgba(0,0,0,.4); }
-@keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 40px rgba(255,215,0,0.8); } }
-.glow-hero { animation: glow 2s ease-in-out infinite; }
-.patent-cube { animation: rotate 20s linear infinite; }
-@keyframes rotate { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PatentForge Ω | Award-Winning AI Patent Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <style>
+        :root { 
+            --gold: #FFD700; 
+            --blue: #1E40AF; 
+            --purple: #8B5CF6; 
+            --dark: #0F172A;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass { 
+            background: rgba(255,255,255,0.08); 
+            backdrop-filter: blur(18px); 
+            border: 1px solid rgba(255,255,255,0.15); 
+        }
+        .gradient-hero { 
+            background: linear-gradient(135deg, var(--gold), var(--blue), var(--purple)); 
+        }
+        .panel { transition: transform .3s ease, box-shadow .3s ease; }
+        .panel:hover { transform: translateY(-4px); box-shadow: 0 25px 50px rgba(0,0,0,.4); }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 40px rgba(255,215,0,0.8); } }
+        .glow-hero { animation: glow 2s ease-in-out infinite; }
+        .patent-cube { animation: rotate 20s linear infinite; }
+        @keyframes rotate { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+        #particles { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
+    </style>
 </head>
 <body class="bg-gradient-to-br from-slate-950 via-indigo-950 to-black text-white min-h-screen overflow-x-hidden">
 
 <!-- PARTICLE BACKGROUND -->
 <canvas id="particles"></canvas>
 
-<!-- HERO - AWWARDS LEVEL -->
-<section class="gradient-hero py-32 px-6 relative overflow-hidden">
-  <div class="absolute inset-0 opacity-20">
-    <div class="absolute top-20 left-10 w-72 h-72 bg-gold rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-    <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple rounded-full mix-blend-multiply filter blur-xl animate-pulse" style="animation-delay: 1s;"></div>
-    <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-blue rounded-full mix-blend-multiply filter blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
-  </div>
-  
-  <div class="max-w-6xl mx-auto text-center relative z-10">
-    <!-- AWWARDS BADGE -->
-    <div class="glow-hero inline-block p-6 rounded-3xl mb-12 bg-black/60 border-2 border-gold/50">
-      <div class="flex items-center justify-center gap-3 mb-2">
-        <i class="fas fa-trophy text-3xl text-gold"></i>
-        <span class="text-xl font-bold bg-gradient-to-r from-gold to-yellow-400 bg-clip-text text-transparent">🏆 AWWARDS NOMINEE 2025</span>
-      </div>
-      <p class="text-gold opacity-90">Limited Early Access - 97 Spots Left</p>
+<!-- HERO SECTION -->
+<section class="gradient-hero py-32 px-6 relative overflow-hidden z-10">
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-[#FFD700] rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-[#8B5CF6] rounded-full mix-blend-multiply filter blur-xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-[#1E40AF] rounded-full mix-blend-multiply filter blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
     </div>
     
-    <!-- MAIN HEADLINE -->
-    <h1 class="text-7xl md:text-9xl font-black mb-8 bg-gradient-to-r from-white via-yellow-300 to-purple-400 bg-clip-text text-transparent drop-shadow-4xl leading-none">
-      PatentForge <span class="text-gold text-6xl md:text-7xl">Ω</span>
-    </h1>
-    
-    <p class="text-2xl md:text-4xl mb-12 font-light max-w-5xl mx-auto leading-tight opacity-95">
-      <span class="font-black text-gold block">60-Second USPTO Explainer</span>
-      <span class="font-black text-blue block">10x Faster Provisional Drafts</span>
-      <span class="font-black text-purple-400 block">License Gold Detector</span>
-    </p>
-    
-    <!-- TRIPLE CTA - ALL WORKING STRIPE LINKS -->
-    <div class="flex flex-col lg:flex-row gap-6 justify-center items-center mb-16">
-      <!-- LIFETIME $97 (PRIMARY) -->
-      <a href="https://buy.stripe.com/7sY8wOdww72X4XmeqQ0Ny01" 
-         class="group bg-white/20 backdrop-blur-xl text-white px-16 py-8 rounded-4xl text-3xl font-black border-4 border-white/50 hover:bg-white hover:text-black transition-all duration-700 shadow-4xl hover:shadow-gold hover:scale-105 flex items-center gap-4 text-center min-w-[300px]">
-        <i class="fas fa-crown text-4xl group-hover:text-black"></i>
-        <div>Lifetime<br><span class="text-2xl text-gold">$97</span></div>
-      </a>
-      
-      <!-- MONTHLY $29 -->
-      <a href="https://buy.stripe.com/bJe5kC8cc4UP75uciI0Ny03" 
-         class="group bg-gradient-to-r from-purple-600 to-pink-500 text-white px-16 py-8 rounded-4xl text-2xl font-bold border-4 border-purple-500/50 hover:scale-105 shadow-4xl hover:shadow-purple transition-all duration-500 flex items-center gap-3 min-w-[280px]">
-        <i class="fas fa-bolt text-3xl"></i>
-        <span>Pro Monthly<br>$29/mo</span>
-      </a>
-      
-      <!-- ELITE -->
-      <a href="https://buy.stripe.com/dRm6oGboo4UPfC05Uk0Ny02" 
-         class="group bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-16 py-8 rounded-4xl text-2xl font-bold border-4 border-emerald-400/50 hover:scale-105 shadow-4xl hover:shadow-emerald transition-all duration-500 flex items-center gap-3 min-w-[280px]">
-        <i class="fas fa-diamond text-3xl"></i>
-        <span>Elite<br>Unlimited</span>
-      </a>
+    <div class="max-w-6xl mx-auto text-center relative z-20">
+        <!-- AWARDS BADGE -->
+        <div class="glow-hero inline-block p-6 rounded-3xl mb-12 bg-black/60 border-2 border-[#FFD700]/50">
+            <div class="flex items-center justify-center gap-3 mb-2">
+                <i class="fas fa-trophy text-3xl text-[#FFD700]"></i>
+                <span class="text-xl font-bold bg-gradient-to-r from-[#FFD700] to-yellow-400 bg-clip-text text-transparent">🏆 AWWARDS NOMINEE 2025</span>
+            </div>
+            <p class="text-[#FFD700] opacity-90">Limited Early Access - 97 Spots Left</p>
+        </div>
+        
+        <!-- MAIN HEADLINE -->
+        <h1 class="text-7xl md:text-9xl font-black mb-8 bg-gradient-to-r from-white via-yellow-300 to-[#8B5CF6] bg-clip-text text-transparent drop-shadow-4xl leading-none">
+            PatentForge <span class="text-[#FFD700] text-6xl md:text-7xl">Ω</span>
+        </h1>
+        
+        <p class="text-2xl md:text-4xl mb-12 font-light max-w-5xl mx-auto leading-tight opacity-95">
+            <span class="font-black text-[#FFD700] block">60-Second USPTO Explainer</span>
+            <span class="font-black text-[#1E40AF] block">10x Faster Provisional Drafts</span>
+            <span class="font-black text-[#8B5CF6] block">License Gold Detector</span>
+        </p>
+        
+        <!-- TRIPLE CTA -->
+        <div class="flex flex-col lg:flex-row gap-6 justify-center items-center mb-16">
+            <a href="https://buy.stripe.com/7sY8wOdww72X4XmeqQ0Ny01" 
+               class="group bg-white/20 backdrop-blur-xl text-white px-16 py-8 rounded-4xl text-3xl font-black border-4 border-white/50 hover:bg-white hover:text-black transition-all duration-700 shadow-4xl hover:shadow-[#FFD700] hover:scale-105 flex items-center gap-4 text-center min-w-[300px]">
+                <i class="fas fa-crown text-4xl group-hover:text-black"></i>
+                <div>Lifetime<br><span class="text-2xl text-[#FFD700]">$97</span></div>
+            </a>
+            <a href="https://buy.stripe.com/bJe5kC8cc4UP75uciI0Ny03" 
+               class="group bg-gradient-to-r from-[#8B5CF6] to-pink-500 text-white px-16 py-8 rounded-4xl text-2xl font-bold border-4 border-[#8B5CF6]/50 hover:scale-105 shadow-4xl hover:shadow-[#8B5CF6] transition-all duration-500 flex items-center gap-3 min-w-[280px]">
+                <i class="fas fa-bolt text-3xl"></i>
+                <span>Pro Monthly<br>$29/mo</span>
+            </a>
+            <a href="https://buy.stripe.com/dRm6oGboo4UPfC05Uk0Ny02" 
+               class="group bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-16 py-8 rounded-4xl text-2xl font-bold border-4 border-emerald-400/50 hover:scale-105 shadow-4xl hover:shadow-emerald transition-all duration-500 flex items-center gap-3 min-w-[280px]">
+                <i class="fas fa-diamond text-3xl"></i>
+                <span>Elite<br>Unlimited</span>
+            </a>
+        </div>
+        
+        <!-- LIVE COUNTERS -->
+        <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto text-2xl opacity-90 mb-12">
+            <div class="group hover:text-[#FFD700] transition-colors"><i class="fas fa-bolt mr-3 group-hover:animate-pulse"></i><span id="patents">5,247</span> Analyzed</div>
+            <div class="group hover:text-[#1E40AF] transition-colors"><i class="fas fa-clock mr-3 group-hover:animate-pulse"></i><span id="time">94</span>% Time Saved</div>
+            <div class="group hover:text-[#8B5CF6] transition-colors"><i class="fas fa-dollar-sign mr-3 group-hover:animate-pulse"></i>$<span id="licenses">2.7M</span> Found</div>
+            <div class="group hover:text-emerald-400 transition-colors"><i class="fas fa-users mr-3 group-hover:animate-pulse"></i><span id="attorneys">247</span> Attorneys</div>
+        </div>
     </div>
-    
-    <!-- LIVE COUNTERS -->
-    <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto text-2xl opacity-90 mb-12">
-      <div class="group hover:text-gold transition-colors"><i class="fas fa-bolt mr-3 group-hover:animate-pulse"></i><span id="patents">5,247</span> Analyzed</div>
-      <div class="group hover:text-blue transition-colors"><i class="fas fa-clock mr-3 group-hover:animate-pulse"></i><span id="time">94</span>% Time Saved</div>
-      <div class="group hover:text-purple-400 transition-colors"><i class="fas fa-dollar-sign mr-3 group-hover:animate-pulse"></i>$<span id="licenses">2.7M</span> Found</div>
-      <div class="group hover:text-emerald-400 transition-colors"><i class="fas fa-users mr-3 group-hover:animate-pulse"></i><span id="attorneys">247</span> Attorneys</div>
-    </div>
-  </div>
 </section>
 
-<!-- PROOF SECTION - SOCIAL PROOF -->
+<!-- PROOF SECTION -->
 <section class="py-32 px-6 bg-gradient-to-b from-gray-900/50 to-transparent">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-6xl font-black text-center mb-24 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Real Attorneys Switching Daily</h2>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- TESTIMONIAL 1 -->
-      <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer">
-        <div class="flex items-start gap-6 mb-6">
-          <div class="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
-            <i class="fas fa-star text-2xl text-white"></i>
-          </div>
-          <div>
-            <p class="text-2xl font-bold mb-2 text-emerald-400">Sarah K.</p>
-            <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ Bay Area IP Firm</p>
-            <p class="text-lg opacity-90">"Prior art from 4hrs → 15min. Clients think I have a research team."</p>
-          </div>
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-6xl font-black text-center mb-24 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Real Attorneys Switching Daily</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer panel">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
+                        <i class="fas fa-star text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold mb-2 text-emerald-400">Sarah K.</p>
+                        <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ Bay Area IP Firm</p>
+                        <p class="text-lg opacity-90">"Prior art from 4hrs → 15min. Clients think I have a research team."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer panel">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-[#FFD700] to-orange-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
+                        <i class="fas fa-star text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold mb-2 text-[#FFD700]">Mike R.</p>
+                        <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ Texas Solo</p>
+                        <p class="text-lg opacity-90">"Provisional drafts: 25min total. First tool that gets claims right."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer panel">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-[#8B5CF6] to-pink-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
+                        <i class="fas fa-star text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold mb-2 text-[#8B5CF6]">David L.</p>
+                        <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ NYC Boutique</p>
+                        <p class="text-lg opacity-90">"Found $1.2M licensing deal competitors missed. Game changer."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer panel">
+                <div class="flex items-start gap-6 mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-[#1E40AF] to-indigo-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
+                        <i class="fas fa-star text-2xl text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold mb-2 text-[#1E40AF]">Lisa M.</p>
+                        <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ Silicon Valley</p>
+                        <p class="text-lg opacity-90">"Examiner psychology predictions = 87% allowance rate."</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- TESTIMONIAL 2 -->
-      <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer">
-        <div class="flex items-start gap-6 mb-6">
-          <div class="w-20 h-20 bg-gradient-to-r from-gold to-orange-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
-            <i class="fas fa-star text-2xl text-white"></i>
-          </div>
-          <div>
-            <p class="text-2xl font-bold mb-2 text-gold">Mike R.</p>
-            <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ Texas Solo</p>
-            <p class="text-lg opacity-90">"Provisional drafts: 25min total. First tool that gets claims right."</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- TESTIMONIAL 3 -->
-      <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer">
-        <div class="flex items-start gap-6 mb-6">
-          <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
-            <i class="fas fa-star text-2xl text-white"></i>
-          </div>
-          <div>
-            <p class="text-2xl font-bold mb-2 text-purple-400">David L.</p>
-            <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ NYC Boutique</p>
-            <p class="text-lg opacity-90">"Found $1.2M licensing deal competitors missed. Game changer."</p>
-          </div>
-        </div>
-      </div>
-      
-      <!-- TESTIMONIAL 4 -->
-      <div class="glass p-10 rounded-4xl hover:scale-105 transition-all duration-500 group cursor-pointer">
-        <div class="flex items-start gap-6 mb-6">
-          <div class="w-20 h-20 bg-gradient-to-r from-blue to-indigo-500 rounded-3xl flex items-center justify-center flex-shrink-0 group-hover:rotate-12 transition-all">
-            <i class="fas fa-star text-2xl text-white"></i>
-          </div>
-          <div>
-            <p class="text-2xl font-bold mb-2 text-blue">Lisa M.</p>
-            <p class="opacity-75 mb-2">⭐⭐⭐⭐⭐ Silicon Valley</p>
-            <p class="text-lg opacity-90">"Examiner psychology predictions = 87% allowance rate."</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <!-- INTERACTIVE DEMO -->
 <section class="py-32 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-6xl font-black mb-24 bg-gradient-to-r from-white to-gold bg-clip-text text-transparent">Watch Real Magic Happen</h2>
-    
-    <div class="glass p-16 rounded-5xl max-w-5xl mx-auto">
-      <!-- INPUT DEMO -->
-      <div class="bg-black/80 p-12 rounded-4xl mb-12 border-4 border-gold/30">
-        <div class="flex flex-col lg:flex-row gap-8 items-end mb-8">
-          <div class="flex-1">
-            <label class="block text-2xl font-bold mb-6 text-gold">Paste Patent Number or Text</label>
-            <input type="text" value="US 11,234,567 - AI Patent Analysis System..." 
-                   class="w-full p-8 bg-gray-900/50 border-4 border-gold/50 rounded-4xl text-2xl font-mono focus:border-gold focus:outline-none text-white placeholder-gray-400">
-          </div>
-          <a href="https://buy.stripe.com/7sY8wOdww72X4XmeqQ0Ny01" 
-             class="bg-gradient-to-r from-gold to-yellow-500 text-black px-20 py-10 rounded-4xl text-3xl font-black hover:scale-105 shadow-4xl whitespace-nowrap">
-            <i class="fas fa-magic mr-4"></i>Analyze Now
-          </a>
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-6xl font-black mb-24 bg-gradient-to-r from-white to-[#FFD700] bg-clip-text text-transparent">Watch Real Magic Happen</h2>
+        <div class="glass p-16 rounded-5xl max-w-5xl mx-auto">
+            <div class="bg-black/80 p-12 rounded-4xl mb-12 border-4 border-[#FFD700]/30">
+                <div class="flex flex-col lg:flex-row gap-8 items-end mb-8">
+                    <div class="flex-1">
+                        <label class="block text-2xl font-bold mb-6 text-[#FFD700]">Paste Patent Number or Text</label>
+                        <input type="text" value="US 11,234,567 - AI Patent Analysis System..." 
+                               class="w-full p-8 bg-gray-900/50 border-4 border-[#FFD700]/50 rounded-4xl text-2xl font-mono focus:border-[#FFD700] focus:outline-none text-white placeholder-gray-400" readonly>
+                    </div>
+                    <a href="https://buy.stripe.com/7sY8wOdww72X4XmeqQ0Ny01" 
+                       class="bg-gradient-to-r from-[#FFD700] to-yellow-500 text-black px-20 py-10 rounded-4xl text-3xl font-black hover:scale-105 shadow-4xl whitespace-nowrap">
+                        <i class="fas fa-magic mr-4"></i>Analyze Now
+                    </a>
+                </div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12 p-12 bg-gradient-to-r from-emerald-900/40 to-[#1E40AF]-900/40 rounded-5xl border-4 border-emerald-500/50">
+                <div>
+                    <h4 class="text-4xl font-black mb-8 text-emerald-400 flex items-center gap-3">
+                        <i class="fas fa-chart-line"></i>Analysis Results
+                    </h4>
+                    <div class="space-y-6 text-2xl">
+                        <div><strong>Novelty Risk:</strong> <span class="text-emerald-400 font-black text-4xl">LOW 92%</span></div>
+                        <div><strong>License Potential:</strong> <span class="text-[#FFD700] font-black text-4xl">EXTREMELY HIGH</span></div>
+                        <div><strong>Strongest Claims:</strong> <span class="text-[#1E40AF] font-black">1-5, 12-15</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-4xl font-black mb-8 text-emerald-400 flex items-center gap-3">
+                        <i class="fas fa-lightbulb"></i>Action Items
+                    </h4>
+                    <ul class="space-y-4 text-2xl">
+                        <li class="flex items-center gap-4"><i class="fas fa-check-circle text-emerald-400 text-3xl"></i>File provisional TODAY</li>
+                        <li class="flex items-center gap-4"><i class="fas fa-check-circle text-emerald-400 text-3xl"></i>Target medtech licensing</li>
+                        <li class="flex items-center gap-4"><i class="fas fa-check-circle text-emerald-400 text-3xl"></i>Client: "Ready to monetize"</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- RESULTS -->
-      <div class="grid lg:grid-cols-2 gap-12 p-12 bg-gradient-to-r from-emerald-900/40 to-blue-900/40 rounded-5xl border-4 border-emerald-500/50">
-        <div>
-          <h4 class="text-4xl font-black mb-8 text-emerald-400 flex items-center gap-3">
-            <i class="fas fa-chart-line"></i>Analysis Results
-          </h4>
-          <div class="space-y-6 text-2xl">
-            <div><strong>Novelty Risk:</strong> <span class="text-emerald-400 font-black text-4xl">LOW 92%</span></div>
-            <div><strong>License Potential:</strong> <span class="text-gold font-black text-4xl">EXTREMELY HIGH</span></div>
-            <div><strong>Strongest Claims:</strong> <span class="text-blue font-black">1-5, 12-15</span></div>
-          </div>
+        <div class="glass rounded-5xl p-12 mt-24 max-w-4xl mx-auto">
+            <h3 class="text-4xl font-black mb-8 text-center text-[#FFD700]">3D Patent Structure Viewer</h3>
+            <div id="threeContainer" class="w-full h-80 rounded-4xl bg-gradient-to-r from-gray-900 to-black border-2 border-[#FFD700]/30"></div>
+            <p class="text-xl opacity-90 mt-6 text-center">Visualize claim dependencies spatially. Spot weaknesses instantly.</p>
         </div>
-        <div>
-          <h4 class="text-4xl font-black mb-8 text-emerald-400 flex items-center gap-3">
-            <i class="fas fa-lightbulb"></i>Action Items
-          </h4>
-          <ul class="space-y-4 text-2xl">
-            <li class="flex items-center gap-4"><i class="fas fa-check-circle text-emerald-400 text-3xl"></i>File provisional TODAY</li>
-            <li class="flex items-center gap-4"><i class="fas fa-check-circle text-emerald-400 text-3xl"></i>Target medtech licensing</li>
-            <li class="flex items-center gap-4"><i class="fas fa-check-circle text-emerald-400 text-3xl"></i>Client: "Ready to monetize"</li>
-          </ul>
-        </div>
-      </div>
     </div>
-    
-    <!-- 3D PATENT CUBE -->
-    <div class="glass rounded-5xl p-12 mt-24 max-w-4xl mx-auto">
-      <h3 class="text-4xl font-black mb-8 text-center text-gold">3D Patent Structure Viewer</h3>
-      <div id="threeContainer" class="w-full h-80 rounded-4xl bg-gradient-to-r from-gray-900 to-black border-2 border-gold/30"></div>
-      <p class="text-xl opacity-90 mt-6 text-center">Visualize claim dependencies spatially. Spot weaknesses instantly.</p>
-    </div>
-  </div>
 </section>
 
-<!-- PRICING - CONVERSION OPTIMIZED -->
-<section class="gradient-hero py-32 px-6 relative overflow-hidden">
-  <div class="max-w-5xl mx-auto text-center relative z-10">
-    <h2 class="text-7xl font-black mb-20 bg-gradient-to-r from-white via-gold to-purple-400 bg-clip-text text-transparent drop-shadow-4xl">
-      One Payment. Lifetime Results.
-    </h2>
-    
-    <div class="grid lg:grid-cols-3 gap-12">
-      <!-- LIFETIME $97 (MOST POPULAR) -->
-      <div class="glass p-12 rounded-5xl border-6 border-gold/50 hover:border-gold hover:scale-105 transition-all duration-700 relative group max-w-md mx-auto">
-        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-gold to-yellow-400 text-black px-8 py-3 rounded-3xl text-xl font-black shadow-2xl">
-          MOST POPULAR
+<!-- PRICING -->
+<section class="gradient-hero py-32 px-6 relative overflow-hidden z-10">
+    <div class="max-w-5xl mx-auto text-center relative z-20">
+        <h2 class="text-7xl font-black mb-20 bg-gradient-to-r from-white via-[#FFD700] to-[#8B5CF6] bg-clip-text text-transparent drop-shadow-4xl">
+            One Payment. Lifetime Results.
+        </h2>
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- LIFETIME $97 -->
+            <div class="glass p-12 rounded-5xl border-6 border-[#FFD700]/50 hover:border-[#FFD700] hover:scale-105 transition-all duration-700 relative group max-w-md mx-auto panel">
+                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#FFD700] to-yellow-400 text-black px-8 py-3 rounded-3xl text-xl font-black shadow-2xl">
+                    MOST POPULAR
+                </div>
+                <div class="bg-[#FFD700]/20 p-8 rounded-4xl mb-12">
+                    <h3 class="text-4xl font-black mb-6 text-[#FFD700]">Lifetime Access</h3>
+                    <div class="text-7xl font-black text-[#FFD700] mb-6">$97</div>
+                    <span class="bg-[#FFD700]/40 text-[#FFD700] px-6 py-3 rounded-2xl text-2xl font-bold border-2 border-[#FFD700]/50">ONE TIME</span>
+                </div>
+                <ul class="space-y-4 text-2xl mb-12 opacity-95">
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Unlimited analyses forever</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>All future AI personalities</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Elite Pro Status included</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>30-day money-back guarantee</li>
+                </ul>
+                <a href="https://buy.stripe.com/7sY8wOdww72X4XmeqQ0Ny01" 
+                   class="w-full bg-gradient-to-r from-[#FFD700] to-yellow-500 text-black py-10 px-12 rounded-4xl text-3xl font-black shadow-4xl hover:shadow-[#FFD700]/75 block group-hover:scale-105 transition-all">
+                    <i class="fas fa-infinity mr-4"></i>Get Lifetime Now
+                </a>
+            </div>
+            <!-- MONTHLY -->
+            <div class="glass p-12 rounded-5xl border-4 border-[#8B5CF6]/30 hover:border-[#8B5CF6] hover:scale-105 transition-all duration-700 max-w-md mx-auto panel">
+                <div class="bg-[#8B5CF6]/20 p-8 rounded-4xl mb-12">
+                    <h3 class="text-4xl font-black mb-6 text-[#8B5CF6]">Monthly Pro</h3>
+                    <div class="text-7xl font-black text-[#8B5CF6] mb-6">$29<span class="text-4xl">/mo</span></div>
+                    <span class="bg-[#8B5CF6]/40 text-[#8B5CF6] px-6 py-3 rounded-2xl text-2xl font-bold border-2 border-[#8B5CF6]/50">FLEXIBLE</span>
+                </div>
+                <ul class="space-y-4 text-2xl mb-12 opacity-95">
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>500 credits/month</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Pro Status progression</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Cancel anytime</li>
+                </ul>
+                <a href="https://buy.stripe.com/bJe5kC8cc4UP75uciI0Ny03" 
+                   class="w-full bg-gradient-to-r from-[#8B5CF6] to-pink-500 text-white py-10 px-12 rounded-4xl text-3xl font-black shadow-4xl hover:shadow-[#8B5CF6] block group-hover:scale-105 transition-all">
+                    Start Monthly Pro
+                </a>
+            </div>
+            <!-- ELITE -->
+            <div class="glass p-12 rounded-5xl border-4 border-emerald-500/30 hover:border-emerald-500 hover:scale-105 transition-all duration-700 max-w-md mx-auto panel">
+                <div class="bg-emerald-500/20 p-8 rounded-4xl mb-12">
+                    <h3 class="text-4xl font-black mb-6 text-emerald-400">Elite Unlimited</h3>
+                    <div class="text-7xl font-black text-emerald-400 mb-6">$197</div>
+                    <span class="bg-emerald-500/40 text-emerald-400 px-6 py-3 rounded-2xl text-2xl font-bold border-2 border-emerald-500/50">ENTERPRISE</span>
+                </div>
+                <ul class="space-y-4 text-2xl mb-12 opacity-95">
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Team accounts (5 seats)</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Custom AI training</li>
+                    <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Priority processing</li>
+                </ul>
+                <a href="https://buy.stripe.com/dRm6oGboo4UPfC05Uk0Ny02" 
+                   class="w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-10 px-12 rounded-4xl text-3xl font-black shadow-4xl hover:shadow-emerald block group-hover:scale-105 transition-all">
+                    Get Elite Access
+                </a>
+            </div>
         </div>
-        <div class="bg-gold/20 p-8 rounded-4xl mb-12">
-          <h3 class="text-4xl font-black mb-6 text-gold">Lifetime Access</h3>
-          <div class="text-7xl font-black text-gold mb-6">$97</div>
-          <span class="bg-gold/40 text-gold px-6 py-3 rounded-2xl text-2xl font-bold border-2 border-gold/50">ONE TIME</span>
-        </div>
-        <ul class="space-y-4 text-2xl mb-12 opacity-95">
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Unlimited analyses forever</li>
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>All future AI personalities</li>
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Elite Pro Status included</li>
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>30-day money-back guarantee</li>
-        </ul>
-        <a href="https://buy.stripe.com/7sY8wOdww72X4XmeqQ0Ny01" 
-           class="w-full bg-gradient-to-r from-gold to-yellow-500 text-black py-10 px-12 rounded-4xl text-3xl font-black shadow-4xl hover:shadow-gold/75 block group-hover:scale-105 transition-all">
-          <i class="fas fa-infinity mr-4"></i>Get Lifetime Now
-        </a>
-      </div>
-      
-      <!-- MONTHLY -->
-      <div class="glass p-12 rounded-5xl border-4 border-purple-500/30 hover:border-purple-500 hover:scale-105 transition-all duration-700 max-w-md mx-auto">
-        <div class="bg-purple-500/20 p-8 rounded-4xl mb-12">
-          <h3 class="text-4xl font-black mb-6 text-purple-400">Monthly Pro</h3>
-          <div class="text-7xl font-black text-purple-400 mb-6">$29<span class="text-4xl">/mo</span></div>
-          <span class="bg-purple-500/40 text-purple-400 px-6 py-3 rounded-2xl text-2xl font-bold border-2 border-purple-500/50">FLEXIBLE</span>
-        </div>
-        <ul class="space-y-4 text-2xl mb-12 opacity-95">
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>500 credits/month</li>
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Pro Status progression</li>
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Cancel anytime</li>
-        </ul>
-        <a href="https://buy.stripe.com/bJe5kC8cc4UP75uciI0Ny03" 
-           class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white py-10 px-12 rounded-4xl text-3xl font-black shadow-4xl hover:shadow-purple block group-hover:scale-105 transition-all">
-          Start Monthly Pro
-        </a>
-      </div>
-      
-      <!-- ELITE -->
-      <div class="glass p-12 rounded-5xl border-4 border-emerald-500/30 hover:border-emerald-500 hover:scale-105 transition-all duration-700 max-w-md mx-auto">
-        <div class="bg-emerald-500/20 p-8 rounded-4xl mb-12">
-          <h3 class="text-4xl font-black mb-6 text-emerald-400">Elite Unlimited</h3>
-          <div class="text-7xl font-black text-emerald-400 mb-6">$197</div>
-          <span class="bg-emerald-500/40 text-emerald-400 px-6 py-3 rounded-2xl text-2xl font-bold border-2 border-emerald-500/50">ENTERPRISE</span>
-        </div>
-        <ul class="space-y-4 text-2xl mb-12 opacity-95">
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Team accounts (5 seats)</li>
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Custom AI training</li>
-          <li class="flex items-center gap-4"><i class="fas fa-check text-emerald-400 text-2xl"></i>Priority processing</li>
-        </ul>
-        <a href="https://buy.stripe.com/dRm6oGboo4UPfC05Uk0Ny02" 
-           class="w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-10 px-12 rounded-4xl text-3xl font-black shadow-4xl hover:shadow-emerald block group-hover:scale-105 transition-all">
-          Get Elite Access
-        </a>
-      </div>
     </div>
-  </div>
 </section>
 
 <!-- AI PERSONALITIES -->
 <section class="py-32 px-6 bg-gradient-to-b from-gray-900/50 to-transparent">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-6xl font-black text-center mb-20 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Your AI Patent Partner</h2>
-    <p class="text-3xl text-center mb-24 opacity-90 max-w-4xl mx-auto">Choose your attorney's brain. Train on your cases.</p>
-    
-    <div class="grid md:grid-cols-4 gap-8">
-      <div class="glass p-12 rounded-4xl ai-voice cursor-pointer border-4 border-purple-500/50 hover:border-purple-500 hover:scale-105 transition-all group">
-        <div class="text-6xl mb-8 group-hover:scale-110 transition-all">⚖️</div>
-        <h4 class="text-4xl font-black mb-6 text-purple-400 text-center">Traditional</h4>
-        <p class="text-2xl opacity-90 text-center">Conservative. Risk-averse. USPTO-focused.</p>
-      </div>
-      <div class="glass p-12 rounded-4xl ai-voice cursor-pointer border-4 border-blue-500/50 hover:border-blue-500 hover:scale-105 transition-all group">
-        <div class="text-6xl mb-8 group-hover:scale-110 transition-all">🚀</div>
-        <h4 class="text-4xl font-black mb-6 text-blue text-center">Aggressive</h4>
-        <p class="text-2xl opacity-90 text-center">Bold claims. Revenue hunter. Licensing-first.</p>
-      </div>
-      <div class="glass p-12 rounded-4xl ai-voice cursor-pointer border-4 border-emerald-500/50 hover:border-emerald-500 hover:scale-105 transition-all group">
-        <div class="text-6xl mb-8 group-hover:scale-110 transition-all">🧠</div>
-        <h4 class="text-4xl font-black mb-6 text-emerald-400 text-center">Strategic</h4>
-        <p class="text-2xl opacity-90 text-center">Portfolio architect. Long-term mastery.</p>
-      </div>
-      <div class="glass p-12 rounded-4xl ai-voice cursor-pointer border-4 border-gold/50 hover:border-gold hover:scale-105 transition-all group">
-        <div class="text-6xl mb-8 group-hover:scale-110 transition-all">👑</div>
-        <h4 class="text-4xl font-black mb-6 text-gold text-center">Custom</h4>
-        <p class="text-2xl opacity-90 text-center">Your cases. Your voice. Trainable AI.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="py-32 px-6 text-center">
-  <div class="glass p-20 rounded-5xl max-w-4xl mx-auto border-8 border-gold/50">
-    <h3 class="text-7xl font-black mb-12 text-gold">Patent Attorneys Are Switching</h3>
-    <div class="flex flex-col lg:flex-row gap-8 justify-center items-center mb-16">
-      <a href="https://buy.stripe.com/7sY8wOdww72X4XmeqQ0Ny01" 
-         class="bg-gradient-to-r from-gold via-yellow-400 to-orange-500 text-black px-24 py-12 rounded-5xl text-4xl font-black shadow-4xl hover:shadow-gold/75 flex-1 max-w-md hover:scale-105 transition-all">
-        <i class="fas fa-infinity mr-8 text-5xl"></i>Lifetime $97
-      </a>
-      <a href="mailto:james7291989@gmail.com?subject=PatentForge Pro Interest" 
-         class="border-6 border-white px-24 py-12 rounded-5xl text-4xl font-bold hover:bg-white hover:text-black transition-all flex-1 max-w-md">
-        Questions? Email Me
-      </a>
-    </div>
-    <p class="text-2xl opacity-90 mt-12">30-Day Guarantee • Instant Access • No Risk</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="py-20 px-6 text-center border-t border-white/10">
-  <div class="max-w-4xl mx-auto space-y-6">
-    <div class="flex justify-center items-center gap-12 opacity-90">
-      <a href="#" class="hover:text-gold text-2xl transition-all"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="hover:text-blue text-2xl transition-all"><i class="fab fa-linkedin"></i></a>
-      <a href="#" class="hover:text-purple-400 text-2xl transition-all"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p class="text-xl opacity-75 max-w-3xl mx-auto">
-      PatentForge Ω is an AI-assisted analytical platform. Final legal decisions remain with licensed professionals.
-    </p>
-    <p class="text-2xl font-black text-gold">Designed for trust. Built for mastery. © 2025</p>
-  </div>
-</footer>
-
-<!-- JS - PARTICLES + COUNTERS + 3D CUBE + INTERACTIONS -->
-<script>
-  // LIVE COUNTERS
-  const counters = {
-    patents: 5247, time: 94, licenses: 2700000, attorneys: 247
-  };
-  Object.entries(counters).forEach(([id, target]) => {
-    let count = 0;
-    const el = document.getElementById(id);
-    const increment = target / 150;
-    const timer = setInterval(() => {
-      count += increment;
-      if (id === 'licenses') el.textContent = '$' + Math.floor(count).toLocaleString();
-      else el.textContent = Math.floor(count).toLocaleString();
-      if (count >= target) {
-        el.textContent = id === 'licenses' ? '$2.7M' : target.toLocaleString();
-        clearInterval(timer);
-      }
-    }, 20);
-  });
-
-  // AI VOICE INTERACTIONS
-  document.querySelectorAll('.ai-voice').forEach(el => {
-    el.addEventListener('click', () => {
-      document.querySelectorAll('.ai-voice').forEach(e => e.classList.remove('border-gold', 'bg-gold/20'));
-      el.classList.add('border-gold', 'bg-gold/20');
-      setTimeout(() => {
-        el.style.borderColor = '#FFD700';
-        el.style.background = 'rgba(255,215,0,0.15)';
-      }, 150);
-    });
-  });
-
-  // 3D PATENT CUBE
-  function initThreeJS() {
-    const container = document.getElementById('threeContainer');
-    if (!container) return;
-    
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
-
-    // Patent cube geometry (claims structure)
-    const geometry = new THREE.BoxGeometry(2, 1.5, 1.2);
-    const material = new THREE.MeshPhysicalMaterial({ 
-      color: 0xffd700, 
-      metalness: 0.8, 
-      roughness: 0.2, 
-      clearcoat: 1.0 
-    });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
-    scene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(5, 5, 5);
-    scene.add(pointLight);
-
-    camera.position.z = 4;
-
-    function animate() {
-      requestAnimationFrame(animate);
-      cube.rotation.y += 0.008;
-      cube.rotation.x += 0.003;
-      cube.position.y = Math.sin(Date.now() * 0.001) * 0.1;
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    // Responsive
-    window.addEventListener('resize', () => {
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    });
-  }
-
-  // PARTICLE SYSTEM
-  function initParticles() {
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    const particles = [];
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.5 + 0.2
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 215, 0, ${p.alpha})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }
-
-  // INIT ON LOAD
-  window.addEventListener('load', () => {
-    initThreeJS();
-    initParticles();
-  });
-
-  // SMOOTH SCROLL
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
-
-</body>
-</html>
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-6xl font-black text-center mb-20 bg-gradient-to-r from-[#8B5CF6] to-pink-400 bg-clip-text text-transparent">Your AI Patent Partner</h2>
+        <p class="text-3xl text-center mb-24 opacity-90 max-w-4xl mx-auto">Choose your attorney's brain. Train on your cases.</p>
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="glass p-12 rounded-4xl ai-voice cursor-pointer border-4 border-[#8B5CF6]/50 hover:border-[#8B5CF6] hover:scale-105 transition-all group panel">
+                <div class="text-6xl mb-8 group-hover:scale-110 transition-all">⚖️</div>
+                <h4 class="text-4xl font-black mb-6 text-[#8B5CF6] text-center">Traditional</h4>
+                <p class="text-2xl opacity-90 text-center">Conservative. Risk-averse. USPTO-focused.</p>
+            </div>
+            <div class="glass p-12 rounded-4xl ai-voice cursor-pointer border-4 border-[#1E40AF]/50 hover:border-[#1E40AF] hover:scale-105 transition-all group panel">
+                <div class="text-6xl mb-8 group-hover:scale-110 transition-all">🚀</div>
+                <h4 class="text-4xl font-black mb-6 text-[#1E40AF] text-center">Aggressive</h4>
+                <p class="text-2xl opacity-90 text-center">Bold claims. Revenue hunter. Licensing-first.</p>
+            </div>
+            <div class="glass p-12 rounded-4xl ai-voice cursor-pointer border-4 border-emerald-500/50 hover:border-emerald-500 hover:scale-105 transition-all group panel">
+                <div class="text-6xl mb-8 group-hover:scale-110 transition-all">🧠</div>
+                <h4 class="text-4xl font-black mb-6 text-emerald-400 text-center">Strategic</h4>
+                <p class
